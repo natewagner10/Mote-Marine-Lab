@@ -24,10 +24,10 @@ from PIL import Image
 ### Needed Paths ###
 #path_to_images = '/Users/natewagner/Documents/Mote_Manatee_Project/data/MMLDUs_BatchA/'
 path_to_images = None
-path_to_mask = '/Users/natewagner/Documents/Mote_Manatee_Project/canny_filled2.png'
-path_to_blank = '/Users/natewagner/Documents/Mote_Manatee_Project/data/BLANK_SKETCH_updated.jpg'
-#path_to_mask = 'assets/canny_filled2.png'
-#path_to_blank = 'assets/BLANK_SKETCH_updated.jpg'
+#path_to_mask = '/Users/natewagner/Documents/Mote_Manatee_Project/canny_filled2.png'
+#path_to_blank = '/Users/natewagner/Documents/Mote_Manatee_Project/data/BLANK_SKETCH_updated.jpg'
+path_to_mask = 'assets/canny_filled2.png'
+path_to_blank = 'assets/BLANK_SKETCH_updated.jpg'
 # slider 
 orientation_perc = 1
 MA_perc = 1
