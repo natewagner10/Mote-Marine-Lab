@@ -24,23 +24,23 @@ import boto3
 from io import BytesIO
 
 #initiate s3 resource
-#s3 = boto3.resource('s3')
+s3 = boto3.resource('s3')
 
-#my_bucket = s3.Bucket('manatee-images')
+my_bucket = s3.Bucket('manatee-images')
 
-#man_images = []
+man_images = []
 # download file into current directory
-#for s3_object in my_bucket.objects.all():
-#    # Need to split s3_object.key into path and file name, else it will give error file not found.
-#    path, filename = os.path.split(s3_object.key)
-#    object = my_bucket.Object(filename)
-#    file_stream = BytesIO()
-#    img = Image.open(file_stream)
-#    img_arr = np.array(img)
-#    man_images.append(img_arr)
-#    break
-
-#print(man_images[0])
+for s3_object in my_bucket.objects.all():
+    # Need to split s3_object.key into path and file name, else it will give error file not found.
+    path, filename = os.path.split(s3_object.key)
+    object = my_bucket.Object(filename)
+    file_stream = BytesIO()
+    object.download_fileobj(file_stream)
+    img = Image.open(file_stream)
+    img_arr = np.array(img)
+    man_images.append(img_arr)
+    break
+print(man_images[0])
 
 
 
