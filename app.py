@@ -783,6 +783,7 @@ def updateSliders(value):
 )
 def update_output(input1, input2):
     global path_to_images, path_to_mask, orientation_perc, MA_perc, ma_perc, area_perc, aspect_perc, locX_perc, locY_perc, pixs_perc
+    print(os.getcwd())
     for file_ in sorted(os.listdir(input2)):
         print(file_)
         break
