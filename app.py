@@ -38,6 +38,7 @@ for s3_object in my_bucket.objects.all():
     img = Image.open(file_stream)
     img_arr = np.array(img)
     man_images.append(img_arr)
+    break
 
 print(man_images[0])
 
