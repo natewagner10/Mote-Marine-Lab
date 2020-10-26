@@ -20,6 +20,28 @@ from PIL import Image
 ######################################################################################################
 
 
+import boto3
+from io import BytesIO
+
+#initiate s3 resource
+s3 = boto3.resource('s3')
+
+my_bucket = s3.Bucket('manatee-images')
+
+man_images = []
+# download file into current directory
+for s3_object in my_bucket.objects.all():
+    # Need to split s3_object.key into path and file name, else it will give error file not found.
+    path, filename = os.path.split(s3_object.key)
+    object = my_bucket.Object(filename)
+    file_stream = BytesIO()
+    img = Image.open(file_stream)
+    img_arr = np.array(img)
+    man_images.append(img_arr)
+
+print(man_images[0])
+
+
 
 ### Needed Paths ###
 #path_to_images = '/Users/natewagner/Documents/Mote_Manatee_Project/data/MMLDUs_BatchA/'
@@ -783,11 +805,7 @@ def updateSliders(value):
 )
 def update_output(input1, input2):
     global path_to_images, path_to_mask, orientation_perc, MA_perc, ma_perc, area_perc, aspect_perc, locX_perc, locY_perc, pixs_perc
-    print(os.getcwd())
-    for file_ in sorted(os.listdir(input2)):
-        print(file_)
-        break
-    try:        
+    try:
         path_to_images = input2
         find_matches_func.path = path_to_images
         find_matches_func.preLoadData()
@@ -797,21 +815,7 @@ def update_output(input1, input2):
     
 
 
-
 if __name__ == '__main__':
     app.run_server()
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
