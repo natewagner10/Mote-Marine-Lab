@@ -22,6 +22,7 @@ from PIL import Image
 import boto3
 from io import BytesIO
 
+server.secret_key = os.environ.get('secret_key', 'secret')
 
 #initiate s3 resource
 s3 = boto3.resource('s3')
