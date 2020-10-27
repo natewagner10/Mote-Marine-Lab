@@ -22,30 +22,6 @@ from PIL import Image
 import boto3
 from io import BytesIO
 
-server.secret_key = os.environ.get('secret_key', 'secret')
-
-#initiate s3 resource
-s3 = boto3.resource('s3')
-
-my_bucket = s3.Bucket('manatee-images')
-
-man_images = []
-# download file into current directory
-for s3_object in my_bucket.objects.all():
-    # Need to split s3_object.key into path and file name, else it will give error file not found.
-    path, filename = os.path.split(s3_object.key)
-    object = my_bucket.Object(filename)
-    file_stream = BytesIO()
-    object.download_fileobj(file_stream)
-    img = Image.open(file_stream)
-    img_arr = np.array(img)
-    man_images.append(img_arr)
-    break
-print(man_images[0])
-
-
-
-
 ### Needed Paths ###
 #path_to_images = '/Users/natewagner/Documents/Mote_Manatee_Project/data/MMLDUs_BatchA/'
 path_to_images = None
@@ -290,6 +266,28 @@ if 'find_matches_func' not in globals():
 # LITERA
 app = dash.Dash(__name__, meta_tags=[{"content": "width=device-width"}], external_stylesheets=[dbc.themes.LITERA])
 server = app.server
+
+
+server.secret_key = os.environ.get('secret_key', 'secret')
+
+#initiate s3 resource
+s3 = boto3.resource('s3')
+
+my_bucket = s3.Bucket('manatee-images')
+
+man_images = []
+# download file into current directory
+for s3_object in my_bucket.objects.all():
+    # Need to split s3_object.key into path and file name, else it will give error file not found.
+    path, filename = os.path.split(s3_object.key)
+    object = my_bucket.Object(filename)
+    file_stream = BytesIO()
+    object.download_fileobj(file_stream)
+    img = Image.open(file_stream)
+    img_arr = np.array(img)
+    man_images.append(img_arr)
+    break
+print(man_images[0])
 
 
 
