@@ -14,7 +14,7 @@ from dash_canvas import DashCanvas
 from dash_canvas.utils import parse_jsonstring
 import pandas as pd
 from PIL import Image
-from config import S3_KEY, S3_SECRET
+
 
 
 ######################################################################################################
