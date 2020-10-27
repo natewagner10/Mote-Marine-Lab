@@ -287,6 +287,7 @@ man_images = []
 for s3_object in my_bucket.objects.all():
     # Need to split s3_object.key into path and file name, else it will give error file not found.
     path, filename = os.path.split(s3_object.key)
+    print(filename)
     object = my_bucket.Object(filename)
     file_stream = BytesIO()
     object.download_fileobj(file_stream)
