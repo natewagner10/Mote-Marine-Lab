@@ -271,7 +271,9 @@ server = app.server
 server.secret_key = os.environ.get('secret_key', 'secret')
 
 #initiate s3 resource
-s3 = boto3.resource('s3')
+s3 = boto3.resource('s3',
+         aws_access_key_id=ACCESS_ID,
+         aws_secret_access_key= ACCESS_KEY))
 
 my_bucket = s3.Bucket('manatee-images')
 
