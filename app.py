@@ -282,19 +282,25 @@ s3 = boto3.resource('s3',os.environ['S3_KEY'],os.environ['S3_SECRET'])
 
 my_bucket = s3.Bucket('manatee-images')
 
+obj = bucket.Object("DUSW10749_A.jpg") 
+# You must pass the file object ! 
+with open('filename', 'rb') as fileobject:
+    obj.upload_fileobj(fileobject)
+
+
 man_images = []
 # download file into current directory
-for s3_object in my_bucket.objects.all():
-    # Need to split s3_object.key into path and file name, else it will give error file not found.
-    path, filename = os.path.split(s3_object.key)
-    print(filename)
+#for s3_object in my_bucket.objects.all():
+#    # Need to split s3_object.key into path and file name, else it will give error file not found.
+#    path, filename = os.path.split(s3_object.key)
+#    print(filename)
     #object = my_bucket.Object(filename)
     #file_stream = BytesIO()
     #object.download_fileobj(file_stream)
     #img = Image.open(file_stream)
     #img_arr = np.array(img)
     #man_images.append(img_arr)
-    break
+#    break
 #print(man_images[0])
 
 
