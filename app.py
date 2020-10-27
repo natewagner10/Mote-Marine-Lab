@@ -274,8 +274,14 @@ aws_secret_access_key = os.getenv('S3_SECRET')
 
 print(aws_access_key_id)
 
+
+S3_BUCKET = os.environ.get('S3_BUCKET')
+s3 = boto3.client('s3')
+
+
+
 #initiate s3 resource
-s3 = boto3.resource('s3',aws_access_key_id,aws_secret_access_key)
+#s3 = boto3.resource('s3',aws_access_key_id,aws_secret_access_key)
 #import boto
 #from boto.s3.connection import S3Connection
 #s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
