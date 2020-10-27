@@ -269,8 +269,8 @@ server = app.server
 
 
 #server.secret_key = os.environ.get('secret_key', 'secret')
-aws_access_key_id = os.getenv['S3_KEY']
-aws_secret_access_key = os.getenv['S3_SECRET']
+aws_access_key_id = os.getenv('S3_KEY')
+aws_secret_access_key = os.getenv('S3_SECRET')
 
 #initiate s3 resource
 s3 = boto3.resource('s3',aws_access_key_id,aws_secret_access_key)
