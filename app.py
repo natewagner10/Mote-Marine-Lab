@@ -288,14 +288,14 @@ for s3_object in my_bucket.objects.all():
     # Need to split s3_object.key into path and file name, else it will give error file not found.
     path, filename = os.path.split(s3_object.key)
     print(filename)
-    object = my_bucket.Object(filename)
-    file_stream = BytesIO()
-    object.download_fileobj(file_stream)
-    img = Image.open(file_stream)
-    img_arr = np.array(img)
-    man_images.append(img_arr)
+    #object = my_bucket.Object(filename)
+    #file_stream = BytesIO()
+    #object.download_fileobj(file_stream)
+    #img = Image.open(file_stream)
+    #img_arr = np.array(img)
+    #man_images.append(img_arr)
     break
-print(man_images[0])
+#print(man_images[0])
 
 
 
