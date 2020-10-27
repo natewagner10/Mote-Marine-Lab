@@ -19,11 +19,6 @@ from PIL import Image
 
 ######################################################################################################
 
-print("here")
-cd = os.getcwd()
-print(os.listdir(cd))
-print("there")
-
 import boto3
 from io import BytesIO
 
