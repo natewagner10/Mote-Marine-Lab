@@ -14,7 +14,7 @@ from dash_canvas import DashCanvas
 from dash_canvas.utils import parse_jsonstring
 import pandas as pd
 from PIL import Image
-
+from config import S3_KEY, S3_SECRET
 
 
 ######################################################################################################
@@ -276,9 +276,6 @@ server = app.server
 
 #initiate s3 resource
 s3 = boto3.resource('s3',os.environ['S3_KEY'],os.environ['S3_SECRET'])
-#import boto
-#from boto.s3.connection import S3Connection
-#s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 
 my_bucket = s3.Bucket('manatee-images')
 
