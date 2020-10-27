@@ -272,6 +272,8 @@ server = app.server
 aws_access_key_id = os.getenv('S3_KEY')
 aws_secret_access_key = os.getenv('S3_SECRET')
 
+print(aws_access_key_id)
+
 #initiate s3 resource
 s3 = boto3.resource('s3',aws_access_key_id,aws_secret_access_key)
 #import boto
